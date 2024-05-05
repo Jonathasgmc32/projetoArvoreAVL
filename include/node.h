@@ -17,7 +17,6 @@ class node{
         node* getDir();
         void setEsc(node *novoNo);
         void setDir(node *novoNo);
-        animal getAnimal();
         void setAnimal(animal novoAni);
 };
 

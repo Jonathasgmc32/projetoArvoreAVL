@@ -6,7 +6,7 @@ include_directories( include )
 
 add_executable( program
                 src/historico.cpp
-                src/aanimal.cpp 
+                src/animal.cpp 
                 src/node.cpp
                 src/arvore.cpp
                 src/main.cpp

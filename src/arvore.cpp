@@ -11,6 +11,13 @@ bool arvore::arvoreVazia(){
     }
 }
 
+node* arvore::getRaiz(){
+    return this->raiz;
+}
+
+void arvore::setRaiz(node *novoNo){
+    this->raiz = novoNo;
+}
 int arvore::getAltura(node *raiz){
     if(raiz == NULL)
         return -1;
@@ -104,6 +111,21 @@ node* arvore::buscaNo(node *raiz, int id){
     }
     else
         return buscaNo(raiz->getDir(), id);
+}
+
+bool arvore::existeNo(node *raiz, int id){
+    int idRaiz = raiz->getAnimal().getId();
+    if(raiz == NULL){
+        return false;
+    }
+    if(idRaiz == id){
+        return true;
+    }
+    else if(idRaiz < id){
+        return existeNo(raiz->getEsc(), id);
+    }
+    else
+        return existeNo(raiz->getDir(), id);
 }
 
 node* arvore::valorminimo(node *no){

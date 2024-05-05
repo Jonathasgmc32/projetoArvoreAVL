@@ -29,10 +29,6 @@ void node::setDir(node *novoNo){
     this->dir = novoNo;
 }
 
-animal node::getAnimal(){
-    return this->ani;
-}
-
 void node::setAnimal(animal novoAni){
     this->ani = novoAni;
 }
