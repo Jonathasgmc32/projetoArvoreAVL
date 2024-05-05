@@ -34,8 +34,12 @@ string animal::getData_nasc() const{
     return this->data_nascimento;
 }
 
-historico animal::getHistorico() const{
+vector<historico> animal::getHistorico() const{
     return this->hist;
+}
+
+historico animal::getHistoricoById(int id) const{
+    return this->hist[id];
 }
 
 void animal::printDadosAnimal() const{

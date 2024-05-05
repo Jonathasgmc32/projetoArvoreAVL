@@ -2,6 +2,7 @@
 #define ANIMAL_H
 
 #include <iostream>
+#include <vector>
 #include "historico.h"
 using namespace std;
 
@@ -13,7 +14,7 @@ class animal{
         string especie;
         char sexo;
         string data_nascimento;
-        historico hist;
+        vector<historico> hist;
     public:
         animal();
         animal(int id, string apelido, string data_mon, string espec, char sexo, string data_nas);
@@ -23,7 +24,8 @@ class animal{
         string getEspecie() const;
         char getSexo() const;
         string getData_nasc() const;
-        historico getHistorico() const;
+        vector<historico> getHistorico() const;
+        historico getHistoricoById(int id) const;
         void printDadosAnimal() const;
 };
 
