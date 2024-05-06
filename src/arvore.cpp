@@ -59,33 +59,39 @@ node* arvore::balancoEsquerda(node *p){
 node* arvore::inserirNo(node *raiz, node *novoNo){
     if(raiz == NULL){
         raiz = novoNo;
-        cout << "Id inserid com sucesso!" << endl;
         return raiz;
     }
-    
+
     int idRaiz = raiz->getAnimal().getId();
     int idNovo = novoNo->getAnimal().getId();
-
     if(idNovo < idRaiz){
         raiz->setEsc(inserirNo(raiz->getEsc(), novoNo));
     } else if(idNovo > idRaiz){
         raiz->setDir(inserirNo(raiz->getDir(), novoNo));
     }
     else{
-        cout << "Erro! Já existe um animal com esse ID." << endl;
         return raiz;
     }
 
     int balanco = getBalancoNo(raiz);
-    int idDirRaiz = raiz->getDir()->getAnimal().getId();
-    int idEscRaiz = raiz->getEsc()->getAnimal().getId();
+    int idDirRaiz;
+    int idEscRaiz;
+    if(raiz->getDir() != NULL){
+       idDirRaiz = raiz->getDir()->getAnimal().getId();
+    }
+    if(raiz->getEsc() != NULL){
+        idEscRaiz = raiz->getEsc()->getAnimal().getId();
+    }
     //Esquerda
-    if(balanco > 1 && idNovo < idEscRaiz)
+    
+    if(balanco > 1 && idNovo < idEscRaiz){
         return balancoDireita(raiz);
+    }
 
     //Direita
-    if(balanco > -1 && idNovo < idDirRaiz)
+    if(balanco < -1 && idNovo > idDirRaiz){
         return balancoEsquerda(raiz);
+    }
 
     //esquerda-direita
     if(balanco > 1 && idNovo > idEscRaiz){
@@ -102,30 +108,18 @@ node* arvore::inserirNo(node *raiz, node *novoNo){
 }
 
 node* arvore::buscaNo(node *raiz, int id){
-    int idRaiz = raiz->getAnimal().getId();
-    if(raiz == NULL || idRaiz == id){
+    if(raiz == NULL){
         return raiz;
     }
-    else if(idRaiz < id){
+    int idRaiz = raiz->getAnimal().getId();
+    if(idRaiz == id){
+        return raiz;
+    }
+    else if(id < idRaiz){
         return buscaNo(raiz->getEsc(), id);
     }
     else
         return buscaNo(raiz->getDir(), id);
-}
-
-bool arvore::existeNo(node *raiz, int id){
-    int idRaiz = raiz->getAnimal().getId();
-    if(raiz == NULL){
-        return false;
-    }
-    if(idRaiz == id){
-        return true;
-    }
-    else if(idRaiz < id){
-        return existeNo(raiz->getEsc(), id);
-    }
-    else
-        return existeNo(raiz->getDir(), id);
 }
 
 node* arvore::valorminimo(node *no){
@@ -190,4 +184,18 @@ node* arvore::deletarNo(node *raiz, int id){
     }
 
     return raiz;
+}
+
+void arvore::print2D(node *raiz, int space){
+    if(raiz == NULL){
+        return;
+    }
+    space += 10;
+    print2D(raiz->getDir(), space);
+    cout << endl;
+    for(int i = 10; i < space; i++){
+        cout << " ";
+    }
+    cout << raiz->getAnimal().getId() << "\n";
+    print2D(raiz->getEsc(), space);
 }

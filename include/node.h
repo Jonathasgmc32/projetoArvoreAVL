@@ -7,7 +7,6 @@ class node{
     private:
         animal ani;
         node *esc, *dir;
-        int altura;
 
     public:
         node();

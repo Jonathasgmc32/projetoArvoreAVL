@@ -18,7 +18,7 @@ class arvore{
         node* buscaNo(node *raiz, int id);
         node* valorminimo(node* no);
         node* deletarNo(node* raiz, int id);
-        bool existeNo(node *raiz, int id);
+        void print2D(node *raiz, int space);
         
     };
 

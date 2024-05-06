@@ -3,6 +3,7 @@
 
 int main(){
     arvore fauna;
+    node *novoNo  = new node();
     int option, valor;
     cout << "Boas vindas ao sistema de fauna do parque das Dunas" << endl;
     do {
@@ -16,8 +17,6 @@ int main(){
 
         cin >> option;
 
-        node *novoNo  = new node();
-
         switch (option)
         {
         case 0:
@@ -26,7 +25,8 @@ int main(){
         case 1:
             cout << "Insira o id do Animal:" << endl;
             cin >> valor;
-            if(fauna.existeNo(fauna.getRaiz(),valor)){
+            novoNo = fauna.buscaNo(fauna.getRaiz(), valor);
+            if(novoNo != NULL){
                 cout << "Erro! Esse id já existe!" << endl;
             } else{
                 string apelido, data_mon, espec, data_nas;
@@ -42,17 +42,19 @@ int main(){
                 cout << "Insira o sexo do animal: Macho (M)/ Fêmea (F)" << endl;
                 cin >> sexo;
                 animal a = animal(valor, apelido, data_mon, espec, sexo, data_nas);
-                novoNo->setAnimal(a);
-                fauna.setRaiz(fauna.inserirNo(fauna.getRaiz(), novoNo));
-                cout << "Animal iserido com sucesso!" << endl;
+                node *no2 = new node();
+                no2->setAnimal(a);
+                fauna.setRaiz(fauna.inserirNo(fauna.getRaiz(), no2));
+                cout << "Animal inserido com sucesso!" << endl;
                 cout<<endl;
             }
             break;
         case 2:
             cout << "Insira o id do Animal:" << endl;
             cin >> valor;
-            if(fauna.existeNo(fauna.getRaiz(),valor)){
-                fauna.buscaNo(fauna.getRaiz(), valor)->getAnimal().printDadosAnimal();
+            novoNo = fauna.buscaNo(fauna.getRaiz(), valor);
+            if(novoNo != NULL){
+                novoNo->getAnimal().printDadosAnimal();
             }
             else{
                 cout << "Animal não encontrado" << endl;
@@ -61,12 +63,17 @@ int main(){
         case 3:
             cout << "Insira o id do Animal:" << endl;
             cin >> valor;
-            if(fauna.existeNo(fauna.getRaiz(),valor)){
+            novoNo = fauna.buscaNo(fauna.getRaiz(), valor);
+            if(novoNo !=NULL){
                 fauna.setRaiz(fauna.deletarNo(fauna.getRaiz(), valor));
                 cout << "Animal removido com sucesso!" << endl;
             } else{
                 cout << "Animal não encontrado" << endl;
             }
+            cout << endl;
+            break;
+        case 9: 
+            fauna.print2D(fauna.getRaiz(), 5);
             cout << endl;
             break;
         default:

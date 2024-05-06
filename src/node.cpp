@@ -1,6 +1,8 @@
 #include "node.h"
 
 node::node(){
+    this->esc = NULL;
+    this->dir = NULL;
 }
 
 node::node(animal a){
