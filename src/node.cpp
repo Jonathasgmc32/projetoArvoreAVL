@@ -34,3 +34,7 @@ void node::setDir(node *novoNo){
 void node::setAnimal(animal novoAni){
     this->ani = novoAni;
 }
+
+void node::ajustaHistorico(historico h){
+    this->ani.adicionarHistorico(h);
+}

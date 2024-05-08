@@ -25,6 +25,7 @@ int main(){
         case 1:
             cout << "Insira o id do Animal:" << endl;
             cin >> valor;
+            cin.ignore();
             novoNo = fauna.buscaNo(fauna.getRaiz(), valor);
             if(novoNo != NULL){
                 cout << "Erro! Esse id já existe!" << endl;
@@ -32,13 +33,13 @@ int main(){
                 string apelido, data_mon, espec, data_nas;
                 char sexo;
                 cout << "Insira o apelido do animal" << endl;
-                cin >> apelido;
+                getline(cin, apelido);
                 cout << "Insira a data de início de monitoramento" << endl;
-                cin >> data_mon;
+                getline(cin, data_mon);
                 cout << "Insira a espécie" << endl;
-                cin >> espec;
+                getline(cin, espec);
                 cout << "Insira a data de nascimento (deixar vazio se desconhecida)" << endl;
-                cin >> data_nas;
+                getline(cin, data_nas);
                 cout << "Insira o sexo do animal: Macho (M)/ Fêmea (F)" << endl;
                 cin >> sexo;
                 animal a = animal(valor, apelido, data_mon, espec, sexo, data_nas);
@@ -67,6 +68,45 @@ int main(){
             if(novoNo !=NULL){
                 fauna.setRaiz(fauna.deletarNo(fauna.getRaiz(), valor));
                 cout << "Animal removido com sucesso!" << endl;
+            } else{
+                cout << "Animal não encontrado" << endl;
+            }
+            cout << endl;
+            break;
+        case 4:
+            
+            cout << "Insira o id do Animal:" << endl;
+            cin >> valor;
+            cin.ignore();
+            novoNo = fauna.buscaNo(fauna.getRaiz(), valor);
+            if(novoNo !=NULL){
+                string data_ava, exame, amostra;
+                float temp, peso, altura;
+                bool resposta_amostra;
+                cout << "Insira a data de avaliação do animal:" << endl;
+                getline(cin, data_ava);
+                cout << "Insira a altura em CM:" << endl;
+                cin >> altura;
+                cout << "Insira o peso:" << endl;
+                cin >> peso;
+                cout << "Insira a temperatura em °C:" << endl;
+                cin >> temp;
+                cout << "Foi coletada amostra do animal? (S ou N)" << endl;
+                cin >> amostra;
+                cin.ignore();
+                cout << "Qual foi o resultado do exame físico?" << endl;
+                getline(cin, exame);
+
+                if(amostra == "S" || amostra == "s" || amostra == "SIM" || amostra == "Sim")
+                    resposta_amostra = true;
+                else
+                    resposta_amostra = false;
+
+                historico h = historico(data_ava, peso, temp, altura, resposta_amostra, exame);
+                novoNo->ajustaHistorico(h);
+                novoNo->getAnimal().printDadosAnimal();
+
+                cout << "Historico adicionado ao animal com sucesso" << endl;
             } else{
                 cout << "Animal não encontrado" << endl;
             }

@@ -3,16 +3,26 @@
 
 #include <iostream>
 #include <iomanip>
+using namespace std;
 
 class historico{
     private:
-        std::string data_avaliacao;
+        string data_avaliacao;
         float temperatura; 
         float altura;
-        char sexo;
+        float peso;
         bool amostra_coletada;
-        std::string exame_fisico;
-
+        string exame_fisico;
+    public:
+        historico();
+        historico(string data_avaliacao, float peso, float temp, float altura, bool amostra, string exame);
+        string getDataAvaliacao();
+        float getTemperatura();
+        float getAltura();
+        float getPeso();
+        bool getAmostra();
+        string getExame();
+        void imprimirHistorico();
 };
 
 #endif

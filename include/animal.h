@@ -14,8 +14,8 @@ class animal{
         string especie;
         char sexo;
         string data_nascimento;
-        vector<historico> hist;
-    public:
+        std::vector<historico> hist;
+        public:
         animal();
         animal(int id, string apelido, string data_mon, string espec, char sexo, string data_nas);
         int getId() const;
@@ -24,9 +24,10 @@ class animal{
         string getEspecie() const;
         char getSexo() const;
         string getData_nasc() const;
-        vector<historico> getHistorico() const;
-        historico getHistoricoById(int id) const;
-        void printDadosAnimal() const;
+        vector<historico> getHistorico();
+        historico getHistoricoById(int id);
+        void printDadosAnimal();
+        void adicionarHistorico(historico h);
 };
 
 #endif

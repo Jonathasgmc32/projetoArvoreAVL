@@ -17,6 +17,7 @@ class node{
         void setEsc(node *novoNo);
         void setDir(node *novoNo);
         void setAnimal(animal novoAni);
+        void ajustaHistorico(historico h);
 };
 
 #endif

@@ -34,15 +34,20 @@ string animal::getData_nasc() const{
     return this->data_nascimento;
 }
 
-vector<historico> animal::getHistorico() const{
+vector<historico> animal::getHistorico(){
     return this->hist;
 }
 
-historico animal::getHistoricoById(int id) const{
-    return this->hist[id];
+historico animal::getHistoricoById(int id){
+    return this->hist.at(id);
 }
 
-void animal::printDadosAnimal() const{
+void animal::adicionarHistorico(historico h){
+    h.imprimirHistorico();
+    hist.push_back(h);
+}
+
+void animal::printDadosAnimal(){
     cout << "Dados do Animal:" << endl;
     cout << "Id: " << getId() << endl;
     cout << "Apelido:" << getApelido() << endl;
@@ -55,5 +60,19 @@ void animal::printDadosAnimal() const{
         cout << "Data de Nascimento: " << getData_nasc() << endl;
     }
     cout << "Início do Monitoramento: " << getData_mon() << endl;
-    //adicionar imprimirHistorico() aqui depois que implementar
+    int tam_his = hist.size();
+    cout << hist.size() << endl;
+    if(tam_his > 0){
+        cout << "Histórico do animal: " << endl;
+        cout << endl;
+        for (int i = 0; i < tam_his; i++)
+        {
+            cout << "Registro "<< i + 1 << endl;
+            hist.at(i).imprimirHistorico();
+
+        }
+        
+    } else{
+        cout << "Esse animal ainda não possui histórico" << endl;
+    }
 }
