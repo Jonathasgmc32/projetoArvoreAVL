@@ -2,6 +2,7 @@
 #define ANIMAL_H
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "historico.h"
 using namespace std;
@@ -28,6 +29,7 @@ class animal{
         historico getHistoricoById(int id);
         void printDadosAnimal();
         void adicionarHistorico(historico h);
+        void salvarAnimal(ofstream& arquivo);
 };
 
 #endif

@@ -43,7 +43,6 @@ historico animal::getHistoricoById(int id){
 }
 
 void animal::adicionarHistorico(historico h){
-    h.imprimirHistorico();
     hist.push_back(h);
 }
 
@@ -61,7 +60,6 @@ void animal::printDadosAnimal(){
     }
     cout << "Início do Monitoramento: " << getData_mon() << endl;
     int tam_his = hist.size();
-    cout << hist.size() << endl;
     if(tam_his > 0){
         cout << "Histórico do animal: " << endl;
         cout << endl;
@@ -74,5 +72,35 @@ void animal::printDadosAnimal(){
         
     } else{
         cout << "Esse animal ainda não possui histórico" << endl;
+    }
+}
+
+void animal::salvarAnimal(ofstream& arquivo){
+    arquivo << "Id do animal: " << id << endl;
+    arquivo << "Apelido: " << apelido << endl;
+    arquivo << "Data do inicio do monitoramento: " << data_monitoramnto << endl;
+    arquivo << "Espécie: " << especie << endl;
+    arquivo << "Sexo: " << sexo << endl;
+    arquivo << "Data Nascimento: " << data_nascimento << endl;
+    arquivo << "Históricos Registrados: " << hist.size() << endl;
+    if (hist.size() > 0){
+        for (int i = 0; i < hist.size(); i++)
+        {
+            arquivo << "---------------------------" << endl;
+            arquivo << "Histórico " << i + 1 << endl;
+            arquivo << "Data da avaliação: " << hist[i].getDataAvaliacao() << endl;
+            arquivo << "Temperatura: " << hist[i].getTemperatura() << endl;
+            arquivo << "Peso: " << hist[i].getPeso() << endl;
+            arquivo << "Altura: " << hist[i].getAltura() << "cm" <<endl;
+            if(hist[i].getAmostra()){
+                arquivo << "Foi coletadada uma amostra" << endl;
+            }
+            else {
+                arquivo << "Nenhuma amostra foi coletada" << endl;
+            }
+            arquivo << "Resultado do Exame: " << hist[i].getExame() << endl;
+            
+        }
+        arquivo << "---------------------------" << endl;
     }
 }

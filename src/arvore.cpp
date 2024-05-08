@@ -199,3 +199,22 @@ void arvore::print2D(node *raiz, int space){
     cout << raiz->getAnimal().getId() << "\n";
     print2D(raiz->getEsc(), space);
 }
+void arvore::salvarArvore(node *raiz, std::string nomeArquivo){
+    std::ofstream arquivo(nomeArquivo);
+    if (arquivo.is_open()) {
+        salvarEmOrdem(raiz, arquivo);
+        arquivo.close();
+        std::cout << "Os animais foram salvos em arquivo com sucesso" << endl;
+    } else {
+        std::cout << "Erro ao abrir o arquivo" << endl;
+    }
+
+}
+
+void arvore::salvarEmOrdem(node *raiz, ofstream& arquivo) {
+    if (raiz != nullptr) {
+        salvarEmOrdem(raiz->getEsc(), arquivo);
+        raiz->getAnimal().salvarAnimal(arquivo);
+        salvarEmOrdem(raiz->getDir(), arquivo);
+    }
+}

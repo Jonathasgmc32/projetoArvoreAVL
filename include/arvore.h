@@ -1,6 +1,7 @@
 #ifndef ARVORE_H
 #define ARVORE_H
 #include "node.h"
+#include <fstream>
 
 class arvore{
     private:
@@ -19,6 +20,8 @@ class arvore{
         node* valorminimo(node* no);
         node* deletarNo(node* raiz, int id);
         void print2D(node *raiz, int space);
+        void salvarArvore(node *raiz, string arquivo);
+        void salvarEmOrdem(node *raiz, ofstream& arquivo);
         
     };
 

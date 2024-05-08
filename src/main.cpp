@@ -104,13 +104,16 @@ int main(){
 
                 historico h = historico(data_ava, peso, temp, altura, resposta_amostra, exame);
                 novoNo->ajustaHistorico(h);
-                novoNo->getAnimal().printDadosAnimal();
 
                 cout << "Historico adicionado ao animal com sucesso" << endl;
             } else{
                 cout << "Animal não encontrado" << endl;
             }
             cout << endl;
+            break;
+        case 5:
+            fauna.salvarArvore(fauna.getRaiz(), "DadosAnimais.txt");
+            
             break;
         case 9: 
             fauna.print2D(fauna.getRaiz(), 5);
