@@ -176,10 +176,6 @@ int main(int argc, char* argv[]){
             fauna.salvarArvore(fauna.getRaiz(), "DadosAnimais.txt");
             
             break;
-        case 9: 
-            fauna.print2D(fauna.getRaiz(), 5);
-            cout << endl;
-            break;
         default:
             cout << "Opção inválida!" << endl;
             break;

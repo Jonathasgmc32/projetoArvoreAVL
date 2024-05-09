@@ -186,19 +186,6 @@ node* arvore::deletarNo(node *raiz, int id){
     return raiz;
 }
 
-void arvore::print2D(node *raiz, int space){
-    if(raiz == NULL){
-        return;
-    }
-    space += 10;
-    print2D(raiz->getDir(), space);
-    cout << endl;
-    for(int i = 10; i < space; i++){
-        cout << " ";
-    }
-    cout << raiz->getAnimal().getId() << "\n";
-    print2D(raiz->getEsc(), space);
-}
 void arvore::salvarArvore(node *raiz, string nomeArquivo){
     std::ofstream arquivo(nomeArquivo);
     if (arquivo.is_open()) {
