@@ -103,4 +103,7 @@ void animal::salvarAnimal(ofstream& arquivo){
         }
         arquivo << "---------------------------" << endl;
     }
+    else if (hist.size() == 0){
+        arquivo << "---------------------------" << endl;
+    }
 }

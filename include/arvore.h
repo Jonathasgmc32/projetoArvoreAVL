@@ -22,6 +22,7 @@ class arvore{
         void print2D(node *raiz, int space);
         void salvarArvore(node *raiz, string arquivo);
         void salvarEmOrdem(node *raiz, ofstream& arquivo);
+        void iniciaArvoreArquivo(node *raiz, string nomeArquivo);
         
     };
 

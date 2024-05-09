@@ -1,10 +1,71 @@
 #include <iostream>
+#include <fstream>
 #include "arvore.h"
 
-int main(){
+int main(int argc, char* argv[]){
     arvore fauna;
     node *novoNo  = new node();
-    int option, valor;
+    int option, valor, linha;
+
+    if(argc > 1){
+        std::ifstream arquivo(argv[1]);
+        if (arquivo.is_open()) {
+            int linhasLidas = 0;
+            int qtdHistoricos, qtdAnimais, id;
+            string linha, apelido, data_mon, especie, data_nas, data_aval, exame;
+            char sexo;
+            float altura, peso, temperatura;
+            bool amostra;
+            if(getline(arquivo, linha)){
+                qtdAnimais = stoi(linha);
+                for (int i = 0; i < qtdAnimais; i++)
+                {
+                    getline(arquivo, linha);
+                    id = stoi(linha);
+                    getline(arquivo, apelido);
+                    getline(arquivo,data_mon);
+                    getline(arquivo, especie);
+                    getline(arquivo, linha);
+                    sexo = linha[0];
+                    getline(arquivo, data_nas);
+                    getline(arquivo, linha);
+                    qtdHistoricos = stoi(linha);
+                    novoNo = fauna.buscaNo(fauna.getRaiz(), id);
+                    if(novoNo == NULL){
+                        animal a = animal(id, apelido, data_mon, especie, sexo, data_nas);
+                        node *no2 = new node();
+                        no2->setAnimal(a);
+                        fauna.setRaiz(fauna.inserirNo(fauna.getRaiz(), no2));
+                        for(int j = 0; j < qtdHistoricos; j++){
+                            getline(arquivo,data_aval);
+                            getline(arquivo, linha);
+                            altura = stof(linha);
+                            getline(arquivo, linha);
+                            peso = stof(linha);
+                            getline(arquivo, linha);
+                            temperatura = stof(linha);
+                            getline(arquivo, linha);
+                            amostra = stoi(linha);
+                            getline(arquivo, exame);
+                            historico h = historico(data_aval, peso, temperatura, altura, amostra, exame);
+                            no2->ajustaHistorico(h);
+                        }
+                    } else{
+                        for (int j = 0; j < qtdHistoricos * 6; j++)
+                        {
+                            getline(arquivo, linha);
+                        }
+                        
+                    }
+                }
+                
+            }
+            arquivo.close();
+        } else {
+            std::cout << "Erro ao abrir o arquivo inicial de animais" << endl;
+        }
+    }
+    
     cout << "Boas vindas ao sistema de fauna do parque das Dunas" << endl;
     do {
         cout << "O que você deseja fazer?" << endl;

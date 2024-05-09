@@ -1,0 +1,40 @@
+Id do animal: 8
+Apelido: melissa
+Data do inicio do monitoramento: 
+Espécie: cachorro
+Sexo: F
+Data Nascimento: 23/12/2025
+Históricos Registrados: 0
+---------------------------
+Id do animal: 9
+Apelido: bel
+Data do inicio do monitoramento: 
+Espécie: gato
+Sexo: F
+Data Nascimento: 30/30/30
+Históricos Registrados: 0
+---------------------------
+Id do animal: 10
+Apelido: jose
+Data do inicio do monitoramento: 
+Espécie: louro
+Sexo: M
+Data Nascimento: 10/10/10
+Históricos Registrados: 2
+---------------------------
+Histórico 1
+Data da avaliação: 20/20/20
+Temperatura: 40
+Peso: 25
+Altura: 30cm
+Foi coletadada uma amostra
+Resultado do Exame: ok
+---------------------------
+Histórico 2
+Data da avaliação: 21/20/20
+Temperatura: 50
+Peso: 20
+Altura: 35cm
+Nenhuma amostra foi coletada
+Resultado do Exame: mal
+---------------------------
