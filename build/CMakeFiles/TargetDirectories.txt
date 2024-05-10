@@ -1,3 +1,0 @@
-/mnt/c/Users/jonat/sistemaParqueDasDunas/build/CMakeFiles/program.dir
-/mnt/c/Users/jonat/sistemaParqueDasDunas/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/jonat/sistemaParqueDasDunas/build/CMakeFiles/rebuild_cache.dir

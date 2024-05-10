@@ -23,11 +23,11 @@ int main(int argc, char* argv[]){
                     getline(arquivo, linha);
                     id = stoi(linha);
                     getline(arquivo, apelido);
-                    getline(arquivo,data_mon);
+                    getline(arquivo, data_nas);
                     getline(arquivo, especie);
                     getline(arquivo, linha);
                     sexo = linha[0];
-                    getline(arquivo, data_nas);
+                    getline(arquivo, data_mon);
                     getline(arquivo, linha);
                     qtdHistoricos = stoi(linha);
                     novoNo = fauna.buscaNo(fauna.getRaiz(), id);
